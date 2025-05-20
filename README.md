@@ -50,6 +50,7 @@ Gestão de Materiais: Módulo para administração e revisão de conteúdos acad
 Relatórios de Desempenho: Geração de relatórios detalhados sobre o progresso geral dos usuários e áreas de maior dificuldade.
 
 🛠 Tecnologias e Ambiente de Desenvolvimento:
+
 A. Backend:
 
 Linguagem & Plataforma: 
