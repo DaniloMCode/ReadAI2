@@ -1,49 +1,59 @@
-# ReadAI2
-
 ReadAI 📚🤖
 Plataforma Inteligente de Estudos para Vestibulandos 🚀
 📌 Descrição do Projeto
-O ReadAI é uma plataforma web inovadora de estudo para vestibulares e concursos, que integra inteligência artificial e gamificação para proporcionar uma experiência de aprendizagem altamente eficiente e personalizada. Projetado para otimizar a preparação dos estudantes, o ReadAI oferece ferramentas avançadas como correção automática de redações por IA, geração de planos de estudo adaptativos e um tutor virtual inteligente. Nosso objetivo é transformar a jornada de estudo em um processo mais interativo, engajador e focado nos resultados do aluno.
+O ReadAI é uma plataforma web inovadora, desenvolvida para otimizar a preparação de estudantes para vestibulares e concursos. Sua essência reside na integração estratégica de inteligência artificial e gamificação, buscando transformar a jornada de estudo em uma experiência altamente eficiente, personalizada e engajadora. Nosso objetivo principal é proporcionar ferramentas avançadas que maximizem o desempenho do aluno e o preparem de forma inteligente para seus exames.
 
 ✨ Funcionalidades Principais:
-✅ Perfil do Usuário:
-Sistema robusto de cadastro e login seguro.
-Personalização do perfil com base nos vestibulares de interesse, áreas de conhecimento e matérias favoritas para direcionar o conteúdo.
-✅ Plano de Estudo Personalizado:
-Geração automática de cronogramas de estudo inteligentes e adaptativos, baseados no desempenho do usuário e no conteúdo programático desejado.
-Sugestão dinâmica de materiais de estudo, incluindo vídeos, textos, podcasts e outras fontes relevantes, ajustadas ao ritmo e às necessidades do aluno.
-✅ Banco de Questões e Exercícios:
-Vasto banco de dados com mais de 50 mil questões de diversas disciplinas e instituições.
-Criação de testes personalizados com base em filtros avançados (disciplina, instituição, ano, dificuldade, palavra-chave).
-Correção automática de questões objetivas e feedback imediato para auxiliar na compreensão dos erros.
-✅ Correção de Redação com IA:
-Análise automática e detalhada de redações, avaliando gramática, ortografia, coesão, coerência, argumentação e estrutura textual.
-Fornecimento de sugestões de melhoria pontuais e um relatório de desempenho completo, simulando critérios de bancas examinadoras.
-✅ Tutor Virtual:
-Assistente de IA integrado para esclarecer dúvidas complexas, fornecer explicações adicionais e recomendar conteúdos complementares de forma contextualizada.
-✅ Gamificação:
-Sistema de recompensas (pontos, distintivos e conquistas) para motivar o aprendizado contínuo.
-Desafios de estudo diários/semanais e ranking de desempenho para fomentar a competição saudável e o engajamento.
-Funcionalidade de "Ofensiva" ou "Streak" para acompanhar e incentivar dias de estudo consecutivos.
-✅ Interface Acessível e Responsiva:
-Design moderno e adaptável para garantir compatibilidade e usabilidade em desktop, tablets e dispositivos móveis.
-Implementação de modo noturno para conforto visual e navegação intuitiva.
-✅ Administração e Validação de Conteúdo:
-Módulo para gestão e revisão de materiais acadêmicos, incluindo o banco de questões e temas de redação.
-Relatórios detalhados sobre o desempenho geral dos usuários e áreas de maior dificuldade para aprimoramento contínuo da plataforma.
+1. Perfil do Usuário:
+
+Sistema de Autenticação: Cadastro e login seguro para acesso personalizado.
+Personalização: Configuração de vestibulares de interesse, áreas de conhecimento e matérias favoritas para direcionar o conteúdo de estudo.
+2. Plano de Estudo Personalizado:
+
+Geração Inteligente: Criação automática de cronogramas de estudo adaptativos, baseados no desempenho individual e no conteúdo programático do exame.
+Sugestão de Materiais: Recomendação dinâmica de recursos (vídeos, textos, podcasts) ajustados ao ritmo e às necessidades de aprendizado do aluno.
+3. Banco de Questões e Exercícios:
+
+Acervo Abrangente: Mais de 50 mil questões de diversas disciplinas e instituições.
+Testes Personalizados: Geração de provas e listas de exercícios com filtros avançados (disciplina, instituição, ano, dificuldade, palavra-chave).
+Correção e Feedback: Correção automática de questões objetivas com feedback imediato para auxiliar na compreensão dos erros.
+4. Correção de Redação com IA:
+
+Análise Detalhada: Avaliação automática de gramática, ortografia, coesão, coerência, argumentação e estrutura textual.
+Sugestões de Melhoria: Fornecimento de dicas pontuais e um relatório de desempenho completo, simulando os critérios de bancas examinadoras.
+5. Tutor Virtual:
+
+Assistência de IA: Chatbot inteligente para esclarecer dúvidas complexas.
+Recomendação de Conteúdo: Sugere materiais complementares e explicações adicionais de forma contextualizada.
+6. Gamificação:
+
+Sistema de Recompensas: Pontos, distintivos e conquistas para motivar o aprendizado contínuo.
+Desafios e Ranking: Desafios de estudo diários/semanais e ranking de desempenho para fomentar a competição saudável e o engajamento.
+Ofensiva/Streak: Funcionalidade para acompanhar e incentivar sequências de dias de estudo consecutivos (conforme ilustrado no painel).
+7. Interface Acessível e Responsiva:
+
+Design Adaptável: Layout moderno e compatível com desktops, tablets e dispositivos móveis (web-responsive).
+Experiência do Usuário: Implementação de modo noturno e navegação intuitiva para conforto visual e facilidade de uso.
+8. Administração e Validação de Conteúdo:
+
+Gestão de Materiais: Módulo para administração e revisão de conteúdos acadêmicos (banco de questões, temas de redação).
+Relatórios de Desempenho: Geração de relatórios detalhados sobre o progresso geral dos usuários e áreas de maior dificuldade.
 🛠 Tecnologias e Ambiente de Desenvolvimento:
-Backend:
-Java EE (Jakarta EE 11): Para o desenvolvimento da lógica de negócio e serviços RESTful.
-JSON Processing (Jakarta JSON): Para manipulação e troca de dados entre o frontend e o backend via APIs.
-Frontend:
-HTML5: Estruturação do conteúdo das páginas.
-CSS3: Estilização e design visual da interface.
-JavaScript: Para interatividade, manipulação do DOM e comunicação assíncrona (AJAX).
-Bootstrap 5.3.5: Framework CSS/JS para um design responsivo e componentes de UI prontos.
-JSP (JavaServer Pages) e JSTL (JSP Standard Tag Library): Para a construção de páginas web dinâmicas.
-Infraestrutura e Desenvolvimento:
+A. Backend:
+
+Linguagem & Plataforma: Java EE (Jakarta EE 11)
+Processamento de Dados: JSON Processing (Jakarta JSON) para manipulação e troca de dados via APIs RESTful.
+B. Frontend:
+
+Estruturação: HTML5
+Estilização: CSS3
+Interatividade: JavaScript
+Framework CSS: Bootstrap 5.3.5 (para responsividade e componentes UI)
+Páginas Dinâmicas: JSP (JavaServer Pages) e JSTL (JSP Standard Tag Library)
+C. Infraestrutura e Ferramentas:
+
 Servidor de Aplicações: GlassFish Server 7.0.21
-JDK (Java Development Kit): JDK 24
-IDE (Ambiente de Desenvolvimento Integrado): Apache NetBeans IDE 25
-Banco de Dados:SQlite
+Kit de Desenvolvimento: JDK (Java Development Kit) 24
+Ambiente de Desenvolvimento: Apache NetBeans IDE 25
+Banco de Dados: SQLite
 
