@@ -52,19 +52,29 @@ Relatórios de Desempenho: Geração de relatórios detalhados sobre o progresso
 🛠 Tecnologias e Ambiente de Desenvolvimento:
 A. Backend:
 
-Linguagem & Plataforma: Java EE (Jakarta EE 11)
-Processamento de Dados: JSON Processing (Jakarta JSON) para manipulação e troca de dados via APIs RESTful.
+Linguagem & Plataforma: 
+
+- Java EE (Jakarta EE 11)
+- Processamento de Dados: JSON Processing (Jakarta JSON) para manipulação e troca de dados via APIs RESTful.
+
 B. Frontend:
 
-Estruturação: HTML5
-Estilização: CSS3
-Interatividade: JavaScript
-Framework CSS: Bootstrap 5.3.5 (para responsividade e componentes UI)
-Páginas Dinâmicas: JSP (JavaServer Pages) e JSTL (JSP Standard Tag Library)
+- Estruturação: HTML5
+- Estilização: CSS3
+- Interatividade: JavaScript
+- Framework CSS: Bootstrap 5.3.5 (para responsividade e componentes UI)
+
+
+Páginas Dinâmicas: JSP (JavaServer Pages) e JSPF 
+
 C. Infraestrutura e Ferramentas:
 
-Servidor de Aplicações: GlassFish Server 7.0.21
-Kit de Desenvolvimento: JDK (Java Development Kit) 24
-Ambiente de Desenvolvimento: Apache NetBeans IDE 25
-Banco de Dados: SQLite
+- Servidor de Aplicações:
+    - GlassFish Server 7.0.21
+- Kit de Desenvolvimento:
+    - JDK (Java Development Kit) 24
+- Ambiente de Desenvolvimento:
+    - Apache NetBeans IDE 25
+- Banco de Dados:
+     - SQLite
 
