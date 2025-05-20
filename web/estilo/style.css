@@ -1,0 +1,203 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 19 de mai. de 2025, 08:45:35
+    Author     : morat
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral do corpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+ Cabeçalho e barra de navegação 
+header {
+    background-color: #007bff;
+    padding: 10px;
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a.logo {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+a.logo img {
+    width: 40px; /* Ajuste conforme o tamanho do logo */
+    margin-right: 10px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Container para imagem e texto */
+.conteudo {
+    display: flex;
+    align-items: center; /* Alinha verticalmente a imagem e o texto ao centro */
+    justify-content: space-between; /* Coloca a imagem à esquerda e o texto à direita */
+    width: 100%;
+    max-width: 1200px; /* Limita o tamanho da largura */
+}
+
+/* Estilo da imagem */
+.imagem {
+    width: 40%; /* A imagem ocupa 40% da largura */
+    max-width: 500px; /* Limita a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-right: 20px; /* Espaço entre a imagem e o texto */
+    
+     width: 40%; /* A imagem ocupa 40% da largura */
+    max-width: 500px; /* Limita a largura da imagem */
+   height: auto; /* Mantém a proporção da imagem */
+   margin-right: 20px; /* Espaço entre a imagem e o texto */
+    border-radius: 20px; /* Aplica o arredondamento nas bordas */
+    object-fit: cover; 
+}
+
+/* Estilo do texto */
+.texto {
+    text-align: right; /* Alinha o texto à direita */
+    max-width: 60%; /* Limita a largura máxima do texto */
+}
+
+.texto h1 {
+    font-size: 36px;
+    font-weight: 700; /* Peso mais forte para o título */
+    color: #333;
+}
+
+.texto p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #555;
+}
+.botao_entra{
+    display: flex;
+    flex-direction: column; /* Para colocar os botões um embaixo do outro */
+    gap: 15px; 
+    margin-top: 30px; 
+    padding: 15px 30px; /* Padding maior para espaço interno */
+    border: 2px solid; /* Borda padrão */
+   border-radius: 8px; /* Borda mais arredondada */
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 200px; /* Largura fixa dos botões */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    background-color: white;
+    color: blue;
+    border-color: blue; /* Borda azul */
+}
+
+.botao_cadastro{
+    display: flex;
+    flex-direction: column; /* Para colocar os botões um embaixo do outro */
+    gap: 15px; /* Espaçamento maior entre os botões */
+    margin-top: 30px; 
+    padding: 15px 30px; /* Padding maior para espaço interno */
+    border: 2px solid; /* Borda padrão */
+    border-radius: 8px; /* Borda mais arredondada */
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    width: 200px; /* Largura fixa dos botões */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    background-color: blue;
+    color: white;
+    border-color: blue; /* Borda azul */
+    
+}
+
+
+.btn-lilas {
+    background-color: #c8a2c8; /* Cor lilás (lavanda) - ajuste conforme necessário */
+    border-color: #c8a2c8;
+    color: white; /* Cor do texto do botão */
+}
+
+.btn-lilas:hover {
+    background-color: #c8a2c8 !important; /* Mantém a mesma cor de fundo */
+    border-color: #c8a2c8 !important; /* Mantém a mesma cor da borda */
+    color: white !important; /* Mantém a mesma cor do texto */
+}
+
+.btn-lilas:focus {
+    box-shadow: 0 0 0 0.2rem rgba(200, 162, 200, 0.5); /* Mantém ou ajuste o efeito de foco */
+}
+
+.btn-lilas:active, .btn-lilas.active {
+    background-color: #c8a2c8 !important; /* Mantém a mesma cor no estado ativo */
+    border-color: #c8a2c8 !important;
+    color: white !important;
+}
+
+.btn-lilas:disabled, .btn-lilas.disabled {
+    background-color: #c8a2c8 !important;
+    border-color: #c8a2c8 !important;
+    color: white !important;
+}
+
+.boas-vindas {
+        padding: 40px 0;
+    }
+
+    .texto h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .texto p {
+        font-size: 1.2rem;
+        color: #6c757d;
+    }
+
+    .botao_entra, .botao_cadastro {
+        display: inline-block;
+        padding: 12px 24px;
+        margin-right: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.1rem;
+    }
+
+    .botao_entra {
+        background-color: #007bff; /* Cor primária do Bootstrap */
+        color: white;
+    }
+
+    .botao_cadastro {
+        border: 2px solid #007bff; /* Cor primária do Bootstrap */
+        color: #007bff;
+    }
+
+.bg-primary {
+        background-color: #6f42c1 !important; /* Cor roxa/lilás predominante na imagem */
+    }
+
+
