@@ -1,0 +1,60 @@
+
+.background-animated {
+    background: linear-gradient(-45deg, #0056b3, #007bff, #3399ff, #0056b3);
+    background-size: 400% 400%;
+    animation: gradientMove 50s ease infinite;
+    min-height: 100vh;
+    position: relative;
+    z-index: 0;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.boas-vindas {
+    position: relative;
+    z-index: 2;
+}
+
+.boas-vindas h1,
+.boas-vindas p {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #f1f1f1;
+    color: #0056b3;
+}
+
+footer {
+    font-size: 0.9rem;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.footer-links a {
+    margin: 0 0.5rem;
+}
+
+.footer-brand {
+    font-weight: 600;
+}
+
+

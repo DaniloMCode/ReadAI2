@@ -6,15 +6,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 19 de mai. de 2025, 08:47:08
     Author     : morat
 */
-body {
+/*body {
     background-color: #f8f9fa;
     display: flex; /* Ativa o Flexbox para o body */
-    justify-content: center; /* Centraliza horizontalmente */
-   align-items: center; /* Centraliza verticalmente */
-   min-height: 100vh; /* Garante que o body ocupa toda a altura da viewport */
-   margin: 0; /* Remove a margem padrão do body */
-    margin-right: 100px;
-}
+  /*  justify-content: center; /* Centraliza horizontalmente */
+/*   align-items: center; /* Centraliza verticalmente */
+/*   min-height: 100vh; /* Garante que o body ocupa toda a altura da viewport */
+ /*  margin: 0; /* Remove a margem padrão do body */
+  /*  margin-right: 100px;
+}*/
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -47,6 +47,77 @@ h2 {
     border-bottom: 2px solid #6f42c1;
     color: #6f42c1;
 }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(-45deg, #0056b3, #007bff, #3399ff, #0056b3);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  main {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .nav-tabs .nav-link.active {
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+  }
+
+  form {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out forwards;
+  }
+
+  form.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .form-group label {
     font-weight: bold;
     color: #495057;

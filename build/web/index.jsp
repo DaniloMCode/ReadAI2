@@ -11,13 +11,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Plataforma ReadAi</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
-      
+        <link rel="stylesheet" href="estilo/index.css">
+
+
     </head>
     <body>
+
         <!-- Cabeçalho -->
         <header class="bg-primary text-white py-3">
             <div class="container">
@@ -58,56 +58,54 @@
             </div>
         </header>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-        <main class="bg-light py-5">
+        <main class="background-animated py-5">
             <div class="container">
-
-
                 <section class="boas-vindas">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <img src="imagem/img_main.jpg" alt="Imagem de boas-vindas" class="img-fluid rounded shadow-sm">
+                    <!-- TEXTO -->
+                    <div class="col-lg-6">
+                        <div class="px-lg-4">
+                            <h1 class="fw-bold mb-4 lh-base">
+                                A plataforma feita para <span class="text-warning">Concursos</span> e <span class="text-warning">Vestibulares</span>
+                            </h1>
+                            <p class="fs-5">
+                                Tenha acesso a conteúdos de qualidade, simulados inteligentes e dicas que vão turbinar seu desempenho.
+                            </p>
+                            <a href="#cadastro" class="btn btn-primary btn-lg mt-4 shadow-sm">
+                                Comece Agora
+                            </a>
                         </div>
-                        <div class="col-md-6 mt-4 mt-md-0">
-                            <div class="texto">
-                                <h2 class="mb-3">A plataforma para você treinar para o <span class="text-primary">Concurso</span> e <span class="text-primary">Vestibular</span></h2>
-                            </div>
-                        </div>
-                    </div>
+                    </div>           
                 </section>
             </div>
-        </main>    
-
-        <footer class="bg-primary text-white py-4">
+        </main>
+        <footer class="bg-dark text-white py-3">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-left">
-                        <div class="d-flex flex-column align-items-center align-items-md-start">
+                <div class="row align-items-center">
 
-                            <p class="mb-0">&copy; ReadIA 2025. Todos os direitos reservados.</p>
-                            <p class="mb-0">
-                                <a href="#" class="text-white">Política de privacidade</a> |
-                                <a href="#" class="text-white">Termos de uso</a>
-                            </p>
+                    <!-- Coluna esquerda -->
+                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
+                        <span class="footer-brand">&copy; ReadIA 2025</span> - Todos os direitos reservados. <br>
+                        <a href="#" class="text-white-50 me-2">Política de privacidade</a> |
+                        <a href="#" class="text-white-50 ms-2">Termos de uso</a>
+                    </div>
+
+                    <!-- Coluna direita -->
+                    <div class="col-md-6 text-center text-md-end">
+                        <nav class="footer-links d-inline-flex flex-wrap justify-content-center justify-content-md-end">
+                            <a href="#" class="text-white-50">Diferenciais</a>
+                            <a href="#" class="text-white-50">Benefícios</a>
+                            <a href="#" class="text-white-50">Planos</a>
+                            <a href="#" class="text-white-50">Contato</a>
+                        </nav>
+                        <div class="mt-1 small text-white-50">
+                            Desenvolvido por <strong>Viptech - Smart Solutions</strong>
                         </div>
                     </div>
-                    <div class="col-md-6 text-center text-md-right">
-                        <div class="d-flex flex-column align-items-center align-items-md-end">
-                            <nav class="nav flex-column align-items-center align-items-md-end mb-3">
-                                <a class="nav-link text-white" href="#">Diferenciais</a>
-                                <a class="nav-link text-white" href="#">Benefícios</a>
-                                <a class="nav-link text-white" href="#">Planos</a>
-                                <a class="nav-link text-white" href="#">Contato</a>
-                            </nav>
-                            <p class="text-center text-md-right mb-0">Desenvolvido por</p>
-                            <p class="text-center text-md-right">Viptech - Smart Solutions</p>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
     </body>
 </html>
