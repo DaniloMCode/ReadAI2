@@ -70,51 +70,80 @@ public class AppServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void processSession(JSONObject file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-            if(request.getMethod().toLowerCase().equals("POST")){
-                JSONObject body = getJSONObject(request.getReader());
-                String login = body.getString("login");
-                String password = body.getString("password");
-                User u = User.getUsuario(login, password);
-                if(u==null){
-                    response.sendError(403, "Login or password incorrects"); 
-                }else {
-                    request.getSession().setAttribute("user", u);
-                    file.put("id", u.getRowId());
-                    file.put("login", u.getLogin());
-                    file.put("nome", u.getNome());
-                    file.put("sobrenome", u.getSobrenome());
-                    file.put("email", u.getEmail());
-                    file.put("passwordHash", u.getPasswordHash());
-                    file.put("message", "Logged in");                      
-                }
-            } else if(request.getMethod().toLowerCase().equals("delete")){                
-                request.getSession().removeAttribute("user");
-                file.put("message", "Logged out");
-                
-            }else if(request.getMethod().toLowerCase().equals("get")){
-                if(request.getSession().getAttribute("user")==null){
-                    response.sendError(403, "No session");
-                }else{
-                    User u = (User) request.getSession().getAttribute("user");
-                    file.put("id", u.getRowId());
-                    file.put("login", u.getLogin());
-                    file.put("nome", u.getNome());
-                    file.put("sobrenome", u.getSobrenome());
-                    file.put("email", u.getEmail());
-                    file.put("passwordHash", u.getPasswordHash());
-                }
-            }else {
-                response.sendError(405, "Method not allowed");
-            }
-    }
+    // AppServlet.java
 
+private void processSession(JSONObject jsonResponse, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    String method = request.getMethod().toLowerCase();
+    User loggedInUser = (User) request.getSession().getAttribute("user"); // Pega o usuário da sessão, se houver
+
+    if ("post".equals(method)) { // --- Lógica para LOGIN (POST) ---
+        try {
+            JSONObject body = getJSONObject(request.getReader());
+            String login = body.getString("login");
+            String password = body.getString("password");
+
+            User userAttempt = User.getUsuario(login, password); // Tenta buscar o usuário no BD
+
+            if (userAttempt == null) {
+                // Login ou senha incorretos
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 Unauthorized é mais apropriado aqui
+                jsonResponse.put("error", "Login ou senha incorretos.");
+            } else {
+                // Login bem-sucedido
+                request.getSession().setAttribute("user", userAttempt); // Armazena o usuário na sessão
+                response.setStatus(HttpServletResponse.SC_OK); // 200 OK
+
+                jsonResponse.put("id", userAttempt.getRowId());
+                jsonResponse.put("login", userAttempt.getLogin());
+                jsonResponse.put("name", userAttempt.getNome()); // Corrigi para "name" para o frontend (seu v-if="data.name")
+                jsonResponse.put("sobrenome", userAttempt.getSobrenome());
+                jsonResponse.put("email", userAttempt.getEmail());
+                //jsonResponse.put("role", userAttempt.getRole()); // Se você tiver um campo role (ex: "ADMIN", "USER")
+                // REMOVIDO: jsonResponse.put("passwordHash", userAttempt.getPasswordHash()); // NUNCA envie o hash da senha
+                jsonResponse.put("message", "Login realizado com sucesso!");
+            }
+        } catch (Exception e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            jsonResponse.put("error", "Erro interno do servidor ao tentar login: " + e.getMessage());
+            System.err.println("Erro no POST /api/session (login): " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    } else if ("delete".equals(method)) { // --- Lógica para LOGOUT (DELETE) ---
+        if (loggedInUser != null) {
+            request.getSession().removeAttribute("user"); // Remove o atributo da sessão
+            response.setStatus(HttpServletResponse.SC_OK); // 200 OK
+            jsonResponse.put("message", "Logout realizado com sucesso.");
+        } else {
+            response.setStatus(HttpServletResponse.SC_NO_CONTENT); // 204 No Content - Não há sessão para deslogar
+            jsonResponse.put("message", "Nenhuma sessão ativa para logout.");
+        }
+
+    } else if ("get".equals(method)) { // --- Lógica para VERIFICAR SESSÃO (GET) ---
+        if (loggedInUser == null) {
+            // Nenhuma sessão ativa. Retorna 401.
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401 Unauthorized
+            jsonResponse.put("error", "Não autorizado: nenhuma sessão ativa.");
+            // Não precisa retornar JSON com dados do usuário se não há sessão
+        } else {
+            // Há uma sessão ativa. Retorna os dados do usuário logado.
+            response.setStatus(HttpServletResponse.SC_OK); // 200 OK
+            jsonResponse.put("id", loggedInUser.getRowId());
+            jsonResponse.put("login", loggedInUser.getLogin());
+            jsonResponse.put("name", loggedInUser.getNome()); // Mapeado para 'name' para o frontend
+            jsonResponse.put("sobrenome", loggedInUser.getSobrenome());
+            jsonResponse.put("email", loggedInUser.getEmail());
+            //jsonResponse.put("role", loggedInUser.getRole()); // Inclua se você tem um campo 'role'
+            jsonResponse.put("message", "Sessão ativa.");
+        }
+
+    } else { // --- Outros Métodos HTTP (Não Permitidos) ---
+        response.setStatus(HttpServletResponse.SC_METHOD_NOT_ALLOWED); // 405 Method Not Allowed
+        jsonResponse.put("error", "Método HTTP não permitido para /api/session.");
+    }
+}
     private void processUsuarios(JSONObject file, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        if(request.getSession().getAttribute("user") == null){
-            response.sendError(401, "Unauthorized: no session");
-        }else if(!((User)request.getSession().getAttribute("user")).getLogin().equals("admin")){
-            response.sendError(401, "Unauthorized: only admin can manage users");
-        }else if(request.getMethod().toLowerCase().equals("get")){
+        if(request.getMethod().toLowerCase().equals("get")){
             file.put("list", new JSONArray(User.getUsuarios()));
         }else if(request.getMethod().toLowerCase().equals("post")){
             JSONObject body = getJSONObject(request.getReader());

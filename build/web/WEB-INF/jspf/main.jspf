@@ -12,7 +12,7 @@
                             <p class="fs-5">
                                 Tenha acesso a conteúdos de qualidade, simulados inteligentes e dicas que vão turbinar seu desempenho.
                             </p>
-                            <a href="#cadastro" class="btn btn-primary btn-lg mt-4 shadow-sm">
+                            <a href="pages/cadastro2.jsp?mode=register" class="btn btn-primary btn-lg mt-4 shadow-sm">
                                 Comece Agora
                             </a>
                         </div>

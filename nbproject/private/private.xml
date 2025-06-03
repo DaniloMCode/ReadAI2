@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/src/java/web/AppServlet.java</file>
-            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/pages/cadastro.jsp</file>
             <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/WEB-INF/jspf/headerCad.jspf</file>
             <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/index.jsp</file>
             <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/src/java/model/User.java</file>
+            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/pages/cadastro2.jsp</file>
+            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/src/java/webb/AppServlet.java</file>
+            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/src/java/webb/AppListene.java</file>
+            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/WEB-INF/jspf/main.jspf</file>
+            <file>file:/C:/Users/morat/Documents/GitHub/ReadAI2/web/WEB-INF/jspf/header.jspf</file>
         </group>
     </open-files>
 </project-private>
