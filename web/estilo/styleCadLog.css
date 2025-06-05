@@ -1,111 +1,34 @@
 /*
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 19 de mai. de 2025, 08:47:08
-    Author     : morat
-*/
-/*body {
-    background-color: #f8f9fa;
-    display: flex; /* Ativa o Flexbox para o body */
-  /*  justify-content: center; /* Centraliza horizontalmente */
-/*   align-items: center; /* Centraliza verticalmente */
-/*   min-height: 100vh; /* Garante que o body ocupa toda a altura da viewport */
- /*  margin: 0; /* Remove a margem padrão do body */
-  /*  margin-right: 100px;
-}*/
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Adicione este CSS ao seu arquivo .css ou em uma tag <style> */
+
+.elevated-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Transição suave para o efeito de hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial sutil */
 }
 
-.container {
-   max-width:100px;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
-}
-h2 {
-    color: #6f42c1; /* Cor roxa/lilás predominante */
-    margin-bottom: 20px;
-  text-align: center;
-}
-.nav-tabs {
-    border-bottom: 2px solid #6f42c1;
-    margin-bottom: 20px;
-}
-.nav-link {
-    border: none;
-    color: #6c757d;
-    cursor: pointer;
-}
-.nav-link.active {
-    border-bottom: 2px solid #6f42c1;
-    color: #6f42c1;
+.elevated-card:hover {
+    transform: translateY(-5px); /* Move o card 5px para cima */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
 }
 
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(-45deg, #0056b3, #007bff, #3399ff, #0056b3);
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* Opcional: Estilo para o dashboard-card se você quiser cores de fundo específicas */
+.dashboard-card {
+    background-color: #f8f9fa; /* Um cinza claro de fundo para os cards */
+    border-radius: 8px; /* Cantos arredondados */
+    /* Remove padding interno se ele estiver causando espaço indesejado, pois card-body já tem padding */
+     /*padding: ;*/ 
+}
 
-  @keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  main {
-    background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    padding: 40px;
-    max-width: 600px;
-    width: 100%;
-  }
-
-  .nav-tabs .nav-link {
-    border: none;
-    border-bottom: 2px solid transparent;
-    color: #333;
-    font-weight: bold;
-  }
-
-  .nav-tabs .nav-link.active {
-    border-bottom: 2px solid #007bff;
-    color: #007bff;
-  }
-
-  form {
-    display: none;
-    animation: fadeIn 0.4s ease-in-out forwards;
-  }
-
-  form.active {
-    display: block;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  
-
-
-
-
+/* Garante que o dashboard-content ocupe a altura mínima para centralização vertical */
+/*.dashboard-content {
+    min-height: calc(100vh - 56px); /* 100vh menos a altura da sua navbar (aprox. 56px) */
+    /* Você pode precisar ajustar '56px' dependendo da altura exata da sua navbar */
+   /* padding-top: 20px; /* Adiciona um pequeno padding superior para não colar na navbar */
+    /*padding-bottom: 20px; /* Adiciona um pequeno padding inferior */
+//}
 
 
 
