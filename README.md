@@ -22,21 +22,10 @@ Acervo Abrangente: Mais de 50 mil questões de diversas disciplinas e instituiç
 Testes Personalizados: Geração de provas e listas de exercícios com filtros avançados (disciplina, instituição, ano, dificuldade, palavra-chave).
 Correção e Feedback: Correção automática de questões objetivas com feedback imediato para auxiliar na compreensão dos erros.
 
-✅ Correção de Redação com IA:
-
-Análise Detalhada: Avaliação automática de gramática, ortografia, coesão, coerência, argumentação e estrutura textual.
-Sugestões de Melhoria: Fornecimento de dicas pontuais e um relatório de desempenho completo, simulando os critérios de bancas examinadoras.
-
 ✅ Tutor Virtual:
 
 Assistência de IA: Chatbot inteligente para esclarecer dúvidas complexas.
-Recomendação de Conteúdo: Sugere materiais complementares e explicações adicionais de forma contextualizada.
-
-✅ Gamificação:
-
-Sistema de Recompensas: Pontos, distintivos e conquistas para motivar o aprendizado contínuo.
-Desafios e Ranking: Desafios de estudo diários/semanais e ranking de desempenho para fomentar a competição saudável e o engajamento.
-Ofensiva/Streak: Funcionalidade para acompanhar e incentivar sequências de dias de estudo consecutivos (conforme ilustrado no painel).
+Recomendação de Conteúdo: Explicação de materia de maneira simples e resumida.
 
 ✅ Interface Acessível e Responsiva:
 
