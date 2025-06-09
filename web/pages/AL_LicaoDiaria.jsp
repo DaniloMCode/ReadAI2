@@ -7,62 +7,90 @@
 <%@page import="org.json.JSONArray"%>
 
 <%
-    // Lógica para iniciar o quiz
+    // Lógica para iniciar o quiz com VALIDAÇÃO
     if ("POST".equalsIgnoreCase(request.getMethod())) {
         request.setCharacterEncoding("UTF-8");
         String vestibular = request.getParameter("vestibular");
         String materia = request.getParameter("materia");
         String dificuldade = request.getParameter("dificuldade");
 
-        // Limpa qualquer quiz antigo da sessão
+        // Limpa qualquer quiz antigo da sessão para garantir um novo começo
         session.removeAttribute("quizQuestoes");
         session.removeAttribute("questaoAtual");
 
-        try {
-            // Prompt para a IA gerar 5 questões em formato JSON
-            String promptForAI = String.format(
-                "Crie um quiz com 5 questões sobre a matéria '%s' para o vestibular '%s' com dificuldade '%s'. " +
-                "Responda APENAS com um array JSON válido. Cada objeto no array deve ter as chaves: " +
-                "'enunciado' (string), 'alternativas' (array de 5 strings, onde cada string é APENAS o texto da alternativa, sem incluir 'A)', 'B)', etc.), 'respostaCorreta' (string, a letra da alternativa correta, ex: 'C'), e 'justificativa' (string).",
-                materia, vestibular, dificuldade
-            );
-
-            String jsonResponse = Gemini.getCompletion(promptForAI);
+        if (materia != null && !materia.trim().isEmpty()) {
             
-            // Limpa o texto para garantir que seja um JSON válido
-            // Às vezes a IA adiciona ```json no início e ``` no final
-            jsonResponse = jsonResponse.trim().replace("```json", "").replace("```", "").trim();
-
-            JSONArray questoesJSON = new JSONArray(jsonResponse);
-            List<LD_Questao> quizQuestoes = new ArrayList<>();
-
-            for (int i = 0; i < questoesJSON.length(); i++) {
-                JSONObject qJson = questoesJSON.getJSONObject(i);
-                LD_Questao q = new LD_Questao();
-                q.setEnunciado(qJson.getString("enunciado"));
-                q.setRespostaCorreta(qJson.getString("respostaCorreta"));
-                q.setJustificativa(qJson.getString("justificativa"));
+            // -----------------------------------------
+            // PASSO 1: VALIDAÇÃO DO TÓPICO COM A IA
+            // -----------------------------------------
+            boolean isTopicValid = false;
+            try {
+                String validationPrompt = "O tópico a seguir é uma matéria ou disciplina acadêmica geralmente estudada para vestibulares no Brasil? Responda APENAS com 'sim' ou 'não'. Tópico: '" + materia + "'";
+                String validationResponse = Gemini.getCompletion(validationPrompt);
                 
-                JSONArray alternativasJson = qJson.getJSONArray("alternativas");
-                List<String> alternativasList = new ArrayList<>();
-                for (int j = 0; j < alternativasJson.length(); j++) {
-                    alternativasList.add(alternativasJson.getString(j));
+                // Verificamos se a resposta da IA foi um "sim" claro.
+                if (validationResponse.trim().equalsIgnoreCase("sim")) {
+                    isTopicValid = true;
                 }
-                q.setAlternativas(alternativasList);
-                quizQuestoes.add(q);
+
+            } catch (Exception e) {
+                // Se a validação falhar por qualquer motivo, consideramos o tópico inválido por segurança.
+                e.printStackTrace();
             }
-            
-            // Guarda as questões e o estado inicial na sessão
-            session.setAttribute("quizQuestoes", quizQuestoes);
-            session.setAttribute("questaoAtual", 0);
 
-            // Redireciona para a primeira questão do quiz
-            response.sendRedirect("quiz.jsp");
-            return;
+            // -----------------------------------------
+            // PASSO 2: GERAR O QUIZ OU MOSTRAR ERRO
+            // -----------------------------------------
+            if (isTopicValid) {
+                // Se o tópico for válido, continuamos com a lógica que você já tem.
+                try {
+                    String promptForAI = String.format(
+                        "Para a matéria '%s', nível '%s', para o vestibular '%s', gere um quiz com 5 questões. " +
+                        "Sua resposta DEVE ser um array JSON e NADA MAIS. Não inclua texto explicativo antes ou depois do JSON. " +
+                        "Cada objeto no array deve conter EXATAMENTE as seguintes chaves: " +
+                        "'enunciado' (string com o texto da pergunta), " +
+                        "'alternativas' (um array com EXATAMENTE 5 strings, contendo apenas o texto de cada alternativa, sem as letras 'A)', 'B)', etc.), " +
+                        "'respostaCorreta' (string, contendo apenas a letra maiúscula da alternativa correta, por exemplo: 'C'), " +
+                        "'justificativa' (string com a explicação da resposta).",
+                        materia, dificuldade, vestibular
+                    );
 
-        } catch (Exception ex) {
-            request.setAttribute("error", "Erro ao gerar o quiz: " + ex.getMessage() + "<br><pre>" + ex.toString() + "</pre>");
-            ex.printStackTrace();
+                    String jsonResponse = Gemini.getCompletion(promptForAI);
+                    jsonResponse = jsonResponse.trim().replace("```json", "").replace("```", "").trim();
+
+                    // ... (resto do seu código que parseia o JSON e cria a lista de questões) ...
+                    // Este trecho continua igual.
+                    JSONArray questoesJSON = new JSONArray(jsonResponse);
+                    List<LD_Questao> quizQuestoes = new ArrayList<>();
+                    for (int i = 0; i < questoesJSON.length(); i++) {
+                        JSONObject qJson = questoesJSON.getJSONObject(i);
+                        LD_Questao q = new LD_Questao();
+                        q.setEnunciado(qJson.getString("enunciado"));
+                        q.setRespostaCorreta(qJson.getString("respostaCorreta"));
+                        q.setJustificativa(qJson.getString("justificativa"));
+                        JSONArray alternativasJson = qJson.getJSONArray("alternativas");
+                        List<String> alternativasList = new ArrayList<>();
+                        for (int j = 0; j < alternativasJson.length(); j++) {
+                            alternativasList.add(alternativasJson.getString(j));
+                        }
+                        q.setAlternativas(alternativasList);
+                        quizQuestoes.add(q);
+                    }
+
+                    session.setAttribute("quizQuestoes", quizQuestoes);
+                    session.setAttribute("questaoAtual", 0);
+                    response.sendRedirect("quiz.jsp");
+                    return;
+
+                } catch (Exception ex) {
+                    request.setAttribute("error", "O tópico é válido, mas ocorreu um erro ao gerar o quiz: " + ex.getMessage());
+                    ex.printStackTrace();
+                }
+
+            } else {
+                // Se o tópico NÃO for válido, preparamos uma mensagem de erro para o usuário.
+                request.setAttribute("error", "Por favor, insira uma matéria de estudos válida. Tópicos como '" + materia + "' não são permitidos.");
+            }
         }
     }
 %>
