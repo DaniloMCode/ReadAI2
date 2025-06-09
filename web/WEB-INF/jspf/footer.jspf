@@ -1,29 +1,8 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-   <footer class="bg-dark text-white py-3">
-            <div class="container">
-                <div class="row align-items-center">
+ <footer class="footer-custom mt-5">
+        <div class="container">
+            <p>&copy; 2025 ReadAI. Todos os direitos reservados.</p>
+            <p><a href="#">Pol�tica de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+        </div>
+    </footer>
 
-                    <!-- Coluna esquerda -->
-                    <div class="col-md-6 text-center text-md-start mb-2 mb-md-0">
-                        <span class="footer-brand">&copy; ReadIA 2025</span> - Todos os direitos reservados. <br>
-                        <a href="#" class="text-white-50 me-2">Política de privacidade</a> |
-                        <a href="#" class="text-white-50 ms-2">Termos de uso</a>
-                    </div>
-
-                    <!-- Coluna direita -->
-                  <div class="col-md-6 text-center text-md-end">
-                        <nav class="footer-links d-inline-flex flex-wrap justify-content-center justify-content-md-end">
-                            <a href="#" class="text-white-50">Diferenciais</a>
-                            <a href="#" class="text-white-50">Benefícios</a>
-                            <a href="#" class="text-white-50">Planos</a>
-                            <a href="#" class="text-white-50">Contato</a>
-                        </nav>
-                        <div class="mt-1 small text-white-50">
-                            Desenvolvido por <strong>Viptech - Smart Solutions</strong>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

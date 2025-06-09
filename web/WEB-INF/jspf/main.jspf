@@ -1,22 +1,46 @@
-<%-- any content can be specified here e.g.: --%>
-<%@ page pageEncoding="UTF-8" %>
-<main class="background-animated py-5">
-            <div class="container">
-                <section class="boas-vindas">
-                    <!-- TEXTO -->
-                   <div class="col-lg-6">
-                        <div class="px-lg-4">
-                            <h1 class="fw-bold mb-4 lh-base">
-                                A plataforma feita para <span class="text-warning">Concursos</span> e <span class="text-warning">Vestibulares</span>
-                            </h1>
-                            <p class="fs-5">
-                                Tenha acesso a conteÃºdos de qualidade, simulados inteligentes e dicas que vÃ£o turbinar seu desempenho.
-                            </p>
-                            <a href="pages/cadastro2.jsp?mode=register" class="btn btn-primary btn-lg mt-4 shadow-sm">
-                                Comece Agora
-                            </a>
-                        </div>
-                    </div>           
-                </section>
+<main class="main-hero-section"> <div class="container">
+            <div class="row align-items-center"> <div class="col-lg-6 col-md-12 mb-4 mb-lg-0"> <div class="pe-lg-5 text-center text-lg-start"> <h1 class="fw-bold mb-4">
+                            A plataforma feita para <span class="text-warning">Concursos</span> e <span class="text-warning">Vestibulares</span>
+                        </h1>
+                        <p class="fs-5 mb-5">
+                            Tenha acesso a conteúdos de qualidade, simulados inteligentes e dicas que vão turbinar seu desempenho.
+                        </p>
+                        <a href="<%= request.getContextPath() %>/pages/cadastro2.jsp?mode=register" class="btn btn-primary btn-lg shadow-sm">
+                            Comece Agora <i class="bi bi-arrow-right"></i> </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 main-hero-image-container">
+                    <img src="<%= request.getContextPath() %>/imagem/Rain GIF.gif"
+                         alt="Ilustração de pessoa estudando com chapéu de chuva"
+                         class="img-fluid rounded-3"> </div>
             </div>
-        </main>
+        </div>
+    </main>
+
+    <section class="features-section">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Por que escolher o ReadAI?</h2>
+            <div class="row g-4"> <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="bi bi-question-circle feature-icon"></i>
+                        <h4 class="mt-3">Milhares de Questões</h4>
+                        <p>Acesse um vasto banco de questões de concursos e vestibulares de diversas áreas.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="bi bi-bar-chart feature-icon"></i>
+                        <h4 class="mt-3">Simulados Inteligentes</h4>
+                        <p>Teste seus conhecimentos com simulados adaptativos e acompanhe seu progresso em tempo real.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <i class="bi bi-lightbulb feature-icon"></i>
+                        <h4 class="mt-3">Dicas e Estratégias</h4>
+                        <p>Receba orientações e técnicas comprovadas para otimizar seu estudo e desempenho.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

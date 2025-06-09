@@ -1,144 +1,156 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/css/bootstrap-icons.css">-->
 
-<title>Login / Cadastro - ReadAI2</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+
+
+
+
+
+<!--<title>Login / Cadastro - ReadAI2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 <link rel="stylesheet" href="../../estilo/styleCadLog.css">
 
 </head>
-<body>
-   
-   <div id="session" v-if="loaded">
-    <nav v-if="data" class="navbar navbar-expand-lg bg-bdy-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.jsp"><i class="bi bi-p-square"></i>&nbsp;ReadAI2</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.jsp">Home</a>
-                    </li>
-                    <li class="nav-item" v-if="data.role === 'ADMIN'">
-                        <a class="nav-link" href="portal.jsp">Users</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Montar lista</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Provas anteriores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Treine para os vestibulares</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Listas compartilhadas</a>
-                    </li>
-                </ul>
-                <span class="navbar-text">
-                    <i class="bi bi-person"></i>{{ data.name }} <button @click="logout()" class="btn btn-sm btn-danger" type="button"><i class="bi bi-arrow-right-circle"></i></button>
-                </span>
-            </div>
-        </div>
-    </nav>
+<body>    
 
-    <div class="container-fluid">
-        <div class="row">
-            <div v-if="data" class="col-md-12"> <div class="p-3">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="dashboard-card card elevated-card h-100">
-                                <h5>Questões</h5>
-                                <p>Encontre mais de 50 mil questões em áreas de conhecimento diverso</p>
-                                <button class="btn btn-primary">Responda</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="dashboard-card card elevated-card h-100">
-                                <h5>Provas</h5>
-                                <p>Faça provas de anos anteriores e chegue perto do seu objetivo</p>
-                                <button class="btn btn-info text-white">Ver provas anteriores</button>
-                            </div>
-                        </div>
+    <div id="session" v-if="loaded">
+        <nav v-if="data" class="navbar navbar-expand-lg bg-bdy-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.jsp"><i class="bi bi-p-square"></i>&nbsp;ReadAI2</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= request.getContextPath()%>">Home</a>
+                        </li>
+                        <li class="nav-item" v-if="data.role === 'ADMIN'">
+                            <a class="nav-link" href="pages/portal.jsp">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Provas anteriores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Treine para os vestibulares</a>
+                        </li>
                         
-                    </div>
+                    </ul>
+                    <span class="navbar-text">
+                        <i class="bi bi-person"></i>{{ data.name }} <button @click="logout()" class="btn btn-sm btn-danger" type="button"><i class="bi bi-arrow-right-circle"></i></button>
+                    </span>
                 </div>
             </div>
+        </nav>
 
-            <div v-else class="col-md-12"> <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6">
-                            <div class="d-flex justify-content-center mt-3 mb-3">
-                                <button @click="showLoginForm = true; clearMessages()" :class="{'btn-primary': showLoginForm, 'btn-outline-primary': !showLoginForm}" class="btn me-2">Login</button>
-                                <button @click="showLoginForm = false; clearMessages()" :class="{'btn-success': !showLoginForm, 'btn-outline-success': showLoginForm}" class="btn">Cadastre-se</button>
-                            </div>
-
-                            <div v-if="error" class="alert alert-danger m-2" role="alert">
-                                {{ error }}
-                            </div>
-                            <div v-if="message" class="alert alert-success m-2" role="alert">
-                                {{ message }}
-                            </div>
-
-                            <div v-if="showLoginForm">
-                                <div class="card m-2 mb-4">
-                                    <div class="card-header">
-                                        <h1><i class="bi bi-p-square"></i>&nbsp;ReadAI2 - Login</h1>
-                                    </div>
-                                    <div class="card-body">
-                                        <form @submit.prevent="login()">
-                                            <div class="mb-3">
-                                                <label class="form-label">Login/Username:</label>
-                                                <input v-model="loginUsername" type="text" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Senha:</label>
-                                                <input v-model="loginPassword" type="password" class="form-control" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Login</button>
-                                        </form>
+        <div class="container-fluid">
+            <div class="row">
+                <div v-if="data" class="col-md-12">
+                    <div class="dashboard-content d-flex flex-column justify-content-center align-items-center min-vh-100">
+                        <div class="row w-100 justify-content-center">
+                            <div class="col-md-4 mb-4">
+                                <div class="dashboard-card card elevated-card h-100"> <div class="card-body text-center"> <h5>Questões</h5>
+                                        <p>Encontre mais de 50 mil questões em áreas de conhecimento diverso</p>
+                                        <a class="btn btn-primary" href="../pages/AL_LicaoDiaria.jsp">Responda</a>
                                     </div>
                                 </div>
                             </div>
-
-                            <div v-else>
-                                <div class="card m-2">
-                                    <div class="card-header bg-success text-white">
-                                        <h1><i class="bi bi-person-plus"></i>&nbsp;Cadastre-se no ReadAI2</h1>
+                            <div class="col-md-4 mb-4">
+                                <div class="dashboard-card card elevated-card h-100">
+                                    <div class="card-body text-center">
+                                        <h5>Provas</h5>
+                                        <p>Faça provas de anos anteriores e chegue perto do seu objetivo</p>
+                                        <button class="btn btn-info text-white">Ver provas anteriores</button>
                                     </div>
-                                    <div class="card-body">
-                                        <form @submit.prevent="registerUser()">
-                                            <div class="mb-3">
-                                                <label class="form-label">Login (Username):</label>
-                                                <input v-model="registerLogin" type="text" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Nome:</label>
-                                                <input v-model="registerName" type="text" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Sobrenome:</label>
-                                                <input v-model="registerSobrenome" type="text" class="form-control">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">E-mail:</label>
-                                                <input v-model="registerEmail" type="email" class="form-control" required>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Senha:</label>
-                                                <input v-model="registerPassword" type="password" class="form-control" required>
-                                                <div class="form-text text-muted">A senha deve ter pelo menos 6 caracteres.</div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Confirmar Senha:</label>
-                                                <input v-model="registerConfirmPassword" type="password" class="form-control" required>
-                                            </div>
-                                            <button type="submit" class="btn btn-success">Cadastrar</button>
-                                        </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else class="col-md-12">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-center mt-3 mb-3">
+                                    <button @click="showLoginForm = true; clearMessages()" :class="{'btn-primary': showLoginForm, 'btn-outline-primary': !showLoginForm}" class="btn me-2">Login</button>
+                                    <button @click="showLoginForm = false; clearMessages()" :class="{'btn-success': !showLoginForm, 'btn-outline-success': showLoginForm}" class="btn">Cadastre-se</button>
+                                </div>
+
+                                <div v-if="error" class="alert alert-danger m-2" role="alert">
+                                    {{ error }}
+                                </div>
+                                <div v-if="message" class="alert alert-success m-2" role="alert">
+                                    {{ message }}
+                                </div>
+
+                                <div v-if="showLoginForm">
+                                    <div class="card m-2 mb-4">
+                                        <div class="card-header">
+                                            <h1><i class="bi bi-p-square"></i>&nbsp;ReadAI2 - Login</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form @submit.prevent="login()">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Login/Username:</label>
+                                                    <input v-model="loginUsername" type="text" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Senha:</label>
+                                                    <input v-model="loginPassword" type="password" class="form-control" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div v-else>
+                                    <div class="card m-2">
+                                        <div class="card-header bg-success text-white">
+                                            <h1><i class="bi bi-person-plus"></i>&nbsp;Cadastre-se no ReadAI2</h1>
+                                        </div>
+                                        <div class="card-body">
+                                            <form @submit.prevent="registerUser()">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Login (Username):</label>
+                                                    <input v-model="registerLogin" type="text" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Nome:</label>
+                                                    <input v-model="registerName" type="text" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Sobrenome:</label>
+                                                    <input v-model="registerSobrenome" type="text" class="form-control">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">E-mail:</label>
+                                                    <input v-model="registerEmail" type="email" class="form-control" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Senha:</label>
+                                                    <input v-model="registerPassword" type="password" class="form-control" required>
+                                                    <div class="form-text text-muted">A senha deve ter pelo menos 6 caracteres.</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Confirmar Senha:</label>
+                                                    <input v-model="registerConfirmPassword" type="password" class="form-control" required>
+                                                </div>
+                                                <button type="submit" class="btn btn-success">Cadastrar</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -147,13 +159,15 @@
                 </div>
             </div>
         </div>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
     </div>
-</div>
 
 
     <script>
-    
-    const shared = Vue.reactive({ session: null });
+
+const shared = Vue.reactive({session: null});
 const sessionApp = Vue.createApp({
     data() {
         return {
@@ -189,7 +203,7 @@ const sessionApp = Vue.createApp({
             try {
                 const options = {
                     method: method,
-                    headers: { "Content-Type": "application/json" }
+                    headers: {"Content-Type": "application/json"}
                 };
                 if (data) {
                     options.body = JSON.stringify(data);
@@ -206,7 +220,7 @@ const sessionApp = Vue.createApp({
                 this.error = "Erro de rede ou servidor: " + e.message;
                 console.error("Erro na requisição:", e);
                 return null;
-            }
+        }
         },
         // --- Lógica de Sessão (Login/Logout) ---
         async loadSession() {
@@ -233,9 +247,9 @@ const sessionApp = Vue.createApp({
             }
 
             const data = await this.request(
-                "/ReadAI2/api/session",
-                "POST",
-                { "login": this.loginUsername, "password": this.loginPassword }
+                    "/ReadAI2/api/session",
+                    "POST",
+                    {"login": this.loginUsername, "password": this.loginPassword}
             );
             if (data) {
                 this.data = data;
@@ -285,10 +299,10 @@ const sessionApp = Vue.createApp({
                 password: this.registerPassword
             };
             const data = await this.request(
-                "/ReadAI2/api/users", // Endpoint correto para cadastro
-                "POST", // Método HTTP correto para cadastro
-                userData
-            );
+                    "/ReadAI2/api/users", // Endpoint correto para cadastro
+                    "POST", // Método HTTP correto para cadastro
+                    userData
+                    );
             if (data) {
                 this.message = data.message || "Usuário cadastrado com sucesso! Você pode fazer login agora.";
                 this.error = null;
@@ -311,4 +325,459 @@ const sessionApp = Vue.createApp({
     }
 });
 sessionApp.mount('#session');
+    </script>-->
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Cadastro - ReadAI</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link rel="stylesheet" href="../../estilo/styleCadLog.css">
+
+    <style>
+        /* Estilos Customizados para esta página (exemplo, ajuste ou mova para styleCadLog.css) */
+        body {
+            background-color: #f8f9fa; /* Um cinza muito claro */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Garante que o body ocupe toda a altura da viewport */
+        }
+
+        .navbar-custom {
+            background-color: #0d6efd; /* Azul primário */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link,
+        .navbar-custom .navbar-text {
+            color: white !important;
+            font-weight: 500;
+        }
+        .navbar-custom .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        /* Estilo para os cards de dashboard */
+        .dashboard-card {
+            border: none;
+            border-radius: 0.75rem; /* Bordas mais arredondadas */
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); /* Sombra mais pronunciada */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            cursor: pointer;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px); /* Efeito de elevação */
+            box-shadow: 0 1rem 2rem rgba(0,0,0,0.2); /* Sombra mais forte no hover */
+        }
+        .dashboard-card .card-body {
+            padding: 2rem;
+        }
+        .dashboard-card h5 {
+            color: #0d6efd; /* Cor primária para os títulos */
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        .dashboard-card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Estilo para a seção de login/cadastro */
+        .auth-container {
+            flex-grow: 1; /* Faz com que o container ocupe o espaço restante */
+            display: flex;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            padding: 2rem 0;
+        }
+
+        .auth-card {
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.1);
+            overflow: hidden; /* Garante que o header arredondado fique dentro */
+        }
+        .auth-card .card-header {
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background-color: #0d6efd; /* Fundo azul para login */
+            color: white;
+            border-bottom: none;
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+        }
+        .auth-card .card-header.bg-success { /* Sobrescreve para o cadastro */
+             background-color: #198754 !important;
+        }
+        .auth-card .card-body {
+            padding: 2rem;
+        }
+        .auth-card .form-label {
+            font-weight: 500;
+        }
+        .auth-card .btn {
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+        }
+        .auth-card .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+        }
+        .auth-card .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+        .auth-card .btn-primary:hover, .auth-card .btn-success:hover {
+            filter: brightness(90%); /* Leve escurecimento no hover */
+        }
+        .auth-card .alert {
+            margin-bottom: 1rem; /* Ajusta a margem dos alertas */
+            padding: 0.75rem 1.25rem;
+        }
+        .auth-card .btn-outline-primary, .auth-card .btn-outline-success {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="session" v-if="loaded">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="<%= request.getContextPath() %>/index.jsp">
+                    <i class="bi bi-book-half"></i> ReadAI
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= request.getContextPath()%>">Home</a>
+                        </li>
+                        <li class="nav-item" v-if="data && data.role === 'ADMIN'">
+                            <a class="nav-link" href="<%= request.getContextPath() %>/pages/portal.jsp">Usuários</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Funcionalidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sobre Nós</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contato</a>
+                        </li>
+                        <li class="nav-item ms-lg-3 d-flex align-items-center" v-if="data">
+                            <span class="navbar-text me-2">
+                                <i class="bi bi-person-circle me-1"></i>Olá, {{ data.name }}
+                            </span>
+                            <button @click="logout()" class="btn btn-danger btn-sm" type="button">
+                                Sair <i class="bi bi-box-arrow-right"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item ms-lg-3" v-else>
+                             <a href="<%= request.getContextPath() %>/pages/cadastro2.jsp?mode=register" class="btn btn-warning btn-sm me-2">Criar conta</a>
+                             <a href="<%= request.getContextPath() %>/pages/cadastro2.jsp?mode=login" class="btn btn-outline-light btn-sm">Entrar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="auth-container">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div v-if="data" class="col-md-10 col-lg-8">
+                        <h2 class="text-center mb-5 fw-bold text-primary">Seja bem-vindo(a), {{ data.name }}!</h2>
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-6 col-lg-4">
+                                <a href="<%= request.getContextPath() %>/pages/AL_LicaoDiaria.jsp" class="text-decoration-none">
+                                    <div class="dashboard-card card">
+                                        <div class="card-body">
+                                            <i class="bi bi-question-circle feature-icon"></i>
+                                            <h5>Questões</h5>
+                                            <p>Encontre mais de 50 mil questões em áreas de conhecimento diverso.</p>
+                                            <button class="btn btn-primary mt-3">Responder <i class="bi bi-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="dashboard-card card">
+                                        <div class="card-body">
+                                            <i class="bi bi-journal-check feature-icon"></i>
+                                            <h5>Provas</h5>
+                                            <p>Faça provas de anos anteriores e chegue perto do seu objetivo.</p>
+                                            <button class="btn btn-info text-white mt-3">Ver provas anteriores <i class="bi bi-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <a href="#" class="text-decoration-none">
+                                    <div class="dashboard-card card">
+                                        <div class="card-body">
+                                            <i class="bi bi-lightbulb feature-icon"></i>
+                                            <h5>Guia de Estudos</h5>
+                                            <p>Organize sua rotina, defina metas e receba dicas personalizadas para otimizar seu aprendizado.</p>
+                                            <button class="btn btn-success text-white mt-3">Acessar Guia <i class="bi bi-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-else class="col-md-6 col-lg-5"> <div class="d-flex justify-content-center mt-3 mb-4">
+                            <button @click="showLoginForm = true; clearMessages()" :class="{'btn-primary': showLoginForm, 'btn-outline-primary': !showLoginForm}" class="btn me-3 px-4 py-2 rounded-pill">Login</button>
+                            <button @click="showLoginForm = false; clearMessages()" :class="{'btn-success': !showLoginForm, 'btn-outline-success': showLoginForm}" class="btn px-4 py-2 rounded-pill">Cadastre-se</button>
+                        </div>
+
+                        <div v-if="error" class="alert alert-danger m-2" role="alert">
+                            {{ error }}
+                        </div>
+                        <div v-if="message" class="alert alert-success m-2" role="alert">
+                            {{ message }}
+                        </div>
+
+                        <div v-if="showLoginForm" class="auth-card card">
+                            <div class="card-header">
+                                <i class="bi bi-box-arrow-in-right me-2"></i>Login no ReadAI
+                            </div>
+                            <div class="card-body">
+                                <form @submit.prevent="login()">
+                                    <div class="mb-3">
+                                        <label for="loginUsername" class="form-label">Login/Username:</label>
+                                        <input v-model="loginUsername" type="text" id="loginUsername" class="form-control" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="loginPassword" class="form-label">Senha:</label>
+                                        <input v-model="loginPassword" type="password" id="loginPassword" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        <span v-else>Entrar</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div v-else class="auth-card card">
+                            <div class="card-header bg-success text-white">
+                                <i class="bi bi-person-plus me-2"></i>Cadastre-se no ReadAI
+                            </div>
+                            <div class="card-body">
+                                <form @submit.prevent="registerUser()">
+                                    <div class="mb-3">
+                                        <label for="registerLogin" class="form-label">Login (Username):</label>
+                                        <input v-model="registerLogin" type="text" id="registerLogin" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerName" class="form-label">Nome:</label>
+                                        <input v-model="registerName" type="text" id="registerName" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerSobrenome" class="form-label">Sobrenome:</label>
+                                        <input v-model="registerSobrenome" type="text" id="registerSobrenome" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">E-mail:</label>
+                                        <input v-model="registerEmail" type="email" id="registerEmail" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerPassword" class="form-label">Senha:</label>
+                                        <input v-model="registerPassword" type="password" id="registerPassword" class="form-control" required>
+                                        <div class="form-text text-muted">A senha deve ter pelo menos 6 caracteres.</div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="registerConfirmPassword" class="form-label">Confirmar Senha:</label>
+                                        <input v-model="registerConfirmPassword" type="password" id="registerConfirmPassword" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">
+                                        <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        <span v-else>Cadastrar</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const loaded = ref(false);
+                const data = ref(null);
+                const showLoginForm = ref(true); // Controla qual formulário exibir
+                const loginUsername = ref('');
+                const loginPassword = ref('');
+                const registerLogin = ref('');
+                const registerName = ref('');
+                const registerSobrenome = ref('');
+                const registerEmail = ref('');
+                const registerPassword = ref('');
+                const registerConfirmPassword = ref('');
+                const error = ref('');
+                const message = ref('');
+                const isLoading = ref(false); // Para spinners de carregamento
+
+                // Função utilitária para requisições
+                const request = async (url, method, payload = null) => {
+                    isLoading.value = true;
+                    clearMessages(); // Limpa mensagens anteriores ao iniciar nova requisição
+                    try {
+                        const options = {
+                            method: method,
+                            headers: {
+                                'Content-Type': 'application/json'
+                            }
+                        };
+                        if (payload) {
+                            options.body = JSON.stringify(payload);
+                        }
+
+                        const response = await fetch(url, options);
+                        const responseData = await response.json();
+
+                        if (!response.ok) {
+                            error.value = responseData.error || 'Ocorreu um erro na requisição.';
+                            return null;
+                        } else {
+                            message.value = responseData.message || 'Operação realizada com sucesso.';
+                        }
+
+                        return responseData;
+                    } catch (e) {
+                        console.error('Erro na requisição:', e);
+                        error.value = 'Erro de conexão ou servidor: ' + e.message;
+                        return null;
+                    } finally {
+                        isLoading.value = false;
+                    }
+                };
+
+                const checkSession = async () => {
+                    const response = await request('<%= request.getContextPath() %>/api/session', 'GET');
+                    if (response && response.id) {
+                        data.value = response;
+                    } else {
+                        data.value = null;
+                        // Força a exibição do formulário de login se não houver sessão
+                        const urlParams = new URLSearchParams(window.location.search);
+                        if (urlParams.get('mode') === 'register') {
+                            showLoginForm.value = false;
+                        } else {
+                            showLoginForm.value = true;
+                        }
+                    }
+                    loaded.value = true;
+                };
+
+                const login = async () => {
+                    clearMessages();
+                    const result = await request('<%= request.getContextPath() %>/api/session', 'POST', {
+                        login: loginUsername.value,
+                        password: loginPassword.value
+                    });
+                    if (result && result.id) {
+                        data.value = result;
+                        message.value = result.message || 'Login realizado com sucesso!';
+                        // Redirecionar para o dashboard principal ou Home após login
+                        // window.location.href = '<%= request.getContextPath() %>/pages/dashboard.jsp'; // Exemplo
+                    }
+                };
+
+                const logout = async () => {
+                    clearMessages();
+                    const result = await request('<%= request.getContextPath() %>/api/session', 'DELETE');
+                    if (result) {
+                        data.value = null;
+                        message.value = 'Logout realizado com sucesso!';
+                        // Redireciona para a home ou página de login
+                        window.location.href = '<%= request.getContextPath() %>/index.jsp';
+                    }
+                };
+
+                const registerUser = async () => {
+                    clearMessages();
+                    if (registerPassword.value !== registerConfirmPassword.value) {
+                        error.value = 'As senhas não coincidem!';
+                        return;
+                    }
+                    if (registerPassword.value.length < 6) {
+                        error.value = 'A senha deve ter pelo menos 6 caracteres.';
+                        return;
+                    }
+
+                    const result = await request('<%= request.getContextPath() %>/api/users', 'POST', {
+                        login: registerLogin.value,
+                        name: registerName.value,
+                        sobrenome: registerSobrenome.value,
+                        email: registerEmail.value,
+                        password: registerPassword.value
+                    });
+                    if (result && result.id) {
+                        // Limpa os campos do formulário de cadastro após sucesso
+                        registerLogin.value = '';
+                        registerName.value = '';
+                        registerSobrenome.value = '';
+                        registerEmail.value = '';
+                        registerPassword.value = '';
+                        registerConfirmPassword.value = '';
+                        showLoginForm.value = true; // Volta para o formulário de login
+                        message.value = result.message || 'Cadastro realizado com sucesso! Faça login para continuar.';
+                    }
+                };
+
+                const clearMessages = () => {
+                    error.value = '';
+                    message.value = '';
+                };
+
+                onMounted(() => {
+                    checkSession();
+                });
+
+                return {
+                    loaded,
+                    data,
+                    showLoginForm,
+                    loginUsername,
+                    loginPassword,
+                    registerLogin,
+                    registerName,
+                    registerSobrenome,
+                    registerEmail,
+                    registerPassword,
+                    registerConfirmPassword,
+                    error,
+                    message,
+                    isLoading,
+                    login,
+                    logout,
+                    registerUser,
+                    clearMessages
+                };
+            }
+        }).mount('#session');
     </script>
+</body>
+</html>

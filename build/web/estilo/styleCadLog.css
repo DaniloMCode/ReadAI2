@@ -2,62 +2,6 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 /* Adicione este CSS ao seu arquivo .css ou em uma tag <style> */
+/* Adicione este CSS ao seu arquivo .css ou em uma tag <style> */
 
-.elevated-card {
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    /* Transição suave para o efeito de hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial sutil */
-}
-
-.elevated-card:hover {
-    transform: translateY(-5px); /* Move o card 5px para cima */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais pronunciada ao passar o mouse */
-}
-
-/* Opcional: Estilo para o dashboard-card se você quiser cores de fundo específicas */
-.dashboard-card {
-    background-color: #f8f9fa; /* Um cinza claro de fundo para os cards */
-    border-radius: 8px; /* Cantos arredondados */
-    /* Remove padding interno se ele estiver causando espaço indesejado, pois card-body já tem padding */
-     /*padding: ;*/ 
-}
-
-/* Garante que o dashboard-content ocupe a altura mínima para centralização vertical */
-/*.dashboard-content {
-    min-height: calc(100vh - 56px); /* 100vh menos a altura da sua navbar (aprox. 56px) */
-    /* Você pode precisar ajustar '56px' dependendo da altura exata da sua navbar */
-   /* padding-top: 20px; /* Adiciona um pequeno padding superior para não colar na navbar */
-    /*padding-bottom: 20px; /* Adiciona um pequeno padding inferior */
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-.form-group label {
-    font-weight: bold;
-    color: #495057;
-}
-.btn-primary {
-    background-color: #6f42c1;
-    border-color: #6f42c1;
-}
-.btn-primary:hover {
-    background-color: #563d7c;
-    border-color: #563d7c;
-}
-#cadastro-form, #login-form {
-    display: none;
-}
-#cadastro-form.active, #login-form.active {
-    display: block;
-}
-
-
+     

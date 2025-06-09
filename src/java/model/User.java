@@ -105,7 +105,7 @@ public class User {
         con.close();
     }
 
-    public static void deletetUser(long rowId) throws Exception {
+  public static void deletetUser(long rowId) throws Exception {
         Connection con = AppListene.getConnection();
         String sql = "DELETE FROM usuario WHERE rowid = ?";
         PreparedStatement stmt = con.prepareStatement(sql);
