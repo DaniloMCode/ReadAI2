@@ -81,7 +81,6 @@
             <aside class="sidebar">
                 <nav class="navigation">
                     <ul>
-                        <li><a href="#" class="nav-item">Perfil</a></li>
                         <li><a href="AL_LicaoDiaria.jsp" class="nav-item">Lição Diária</a></li>
                         <li><a href="#" class="nav-item">Guia de Estudos</a></li>
                         <li class="active"><a href="#" class="nav-item">Tutor</a></li>
