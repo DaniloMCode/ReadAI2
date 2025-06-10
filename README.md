@@ -33,11 +33,6 @@ Design Adaptável: Layout moderno e compatível com desktops, tablets e disposit
 Experiência do Usuário: Implementação de modo noturno e navegação intuitiva para conforto visual e facilidade de uso.
 
 
-✅ Administração e Validação de Conteúdo:
-
-Gestão de Materiais: Módulo para administração e revisão de conteúdos acadêmicos (banco de questões, temas de redação).
-Relatórios de Desempenho: Geração de relatórios detalhados sobre o progresso geral dos usuários e áreas de maior dificuldade.
-
 🛠 Tecnologias e Ambiente de Desenvolvimento:
 
 A. Backend:
