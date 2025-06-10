@@ -356,3 +356,62 @@ li.active .nav-item {
     position: relative;
     padding: 20px; /* Um espaçamento geral */
 }
+
+.results-list-container {
+    flex-grow: 1;      /* Ocupa o resto do espaço vertical */
+    overflow-y: auto;  /* A MÁGICA: Adiciona a barra de rolagem vertical */
+    min-height: 0;     /* Truque do flexbox para o scroll funcionar */
+    padding: 10px;     /* Um pequeno espaço interno */
+}
+
+/* Garanta que os outros estilos da página de resultado também estejam lá */
+.result-summary {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Ajustado para um melhor espaçamento */
+}
+
+.study-guide-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.study-guide-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+.study-guide-form .chat-input {
+    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+}
+
+.study-plan-container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.study-plan-container h1 {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.study-plan-container .plan-content {
+    flex-grow: 1;
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    overflow-y: auto; /* Adiciona o scroll se o conteúdo for grande */
+    line-height: 1.7;
+}
+
+.study-plan-container .restart-button {
+    align-self: center; /* Centraliza o botão de refazer */
+}
