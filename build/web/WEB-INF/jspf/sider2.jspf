@@ -1,0 +1,11 @@
+<%-- sidebar.jspf --%>
+<aside class="sidebar bg-light p-3 border-end">
+    <nav class="navigation nav flex-column">
+        <a href="profile.jsp" class="nav-link text-dark nav-item">Perfil</a>
+        <a href="AL_LicaoDiaria.jsp" class="nav-link text-dark nav-item">Lição Diária</a>
+        <a href="study_guide.jsp" class="nav-link text-dark nav-item">Guia de Estudos</a>
+        <a href="index.jsp" class="nav-link text-dark nav-item">Tutor</a>
+        <a href="sobre_nos_readIA2.jsp" class="nav-link text-dark nav-item active bg-light-subtle rounded">Sobre Nós</a> <%-- NOVO LINK --%>
+        <a href="logout.jsp" class="nav-link text-dark nav-item">Sair</a>
+    </nav>
+</aside>

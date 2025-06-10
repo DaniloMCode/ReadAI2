@@ -12,7 +12,7 @@
                         <a class="nav-link" href="#">Funcionalidades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre Nós</a>
+                        <a class="nav-link" href="../../pages/sobre_nos_Readai.jsp">Sobre Nós</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contato</a>

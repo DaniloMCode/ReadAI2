@@ -1,0 +1,28 @@
+<%-- head<%-- header.jspf --%>
+<%@page import="model.User"%> <%-- Importe a classe User se você armazena o objeto User na sessão --%>
+
+
+<header class="top-bar navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand logo-area" href="index.jsp"> <%-- Link para a página inicial, ajuste se necessário --%>
+            <span class="logo-text">READ AI</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto user-profile d-flex align-items-center">
+                <%-- Exibição do nome do usuário --%>
+                
+                <%-- Exemplo de link de logout (opcional, pode estar na sidebar também) --%>
+                <%--
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="logout.jsp">Sair</a>
+                </li>
+                --%>
+            </div>
+        </div>
+    </div>
+</header>

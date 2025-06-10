@@ -146,7 +146,7 @@ public class AppServlet extends HttpServlet {
             }else if(request.getMethod().toLowerCase().equals("post")){
                 JSONObject body = getJSONObject(request.getReader());
                 String login = body.getString("login");
-                String name = body.getString("nome");
+                String name = body.getString("name");
                 String sobrenome = body.getString("sobrenome");
                 String email = body.getString("email");
                 String password = body.getString("password");
@@ -154,7 +154,7 @@ public class AppServlet extends HttpServlet {
             }else if(request.getMethod().toLowerCase().equals("put")){
                 JSONObject body = getJSONObject(request.getReader());
                 String login = body.getString("login");
-                String name = body.getString("nome");
+                String name = body.getString("name");
                 String sobrenome = body.getString("sobrenome");
                 String email = body.getString("email");
                 String password = body.getString("password");

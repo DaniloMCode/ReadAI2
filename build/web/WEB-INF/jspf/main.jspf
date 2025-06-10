@@ -10,9 +10,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 main-hero-image-container">
-                    <img src="<%= request.getContextPath() %>/imagem/Rain GIF.gif"
-                         alt="Ilustração de pessoa estudando com chapéu de chuva"
-                         class="img-fluid rounded-3"> </div>
+                    <img src='imagem/img_main.jpg'>
+                         </div>
             </div>
         </div>
     </main>
