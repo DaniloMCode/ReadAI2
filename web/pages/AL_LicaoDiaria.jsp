@@ -113,7 +113,7 @@
             <aside class="sidebar">
                 <nav class="navigation">
                     <ul>
-                        <li class="active"><a href="AL_LicaoDiaria.jsp" class="nav-item">Lição Diária</a></li>
+                        <li class="active"><a href="AL_LicaoDiaria.jsp" class="nav-item">Quiz</a></li>
                         <li><a href="guia_de_estudos.jsp" class="nav-item">Guia de Estudos</a></li>
                         <li><a href="tela_ia.jsp" class="nav-item">Tutor</a></li>
                     </ul>
