@@ -11,21 +11,21 @@ O ReadAI é uma plataforma web inovadora, desenvolvida para otimizar a preparaç
  Sistema de Autenticação: Cadastro e login seguro para acesso personalizado.
 Personalização: Configuração de vestibulares de interesse, áreas de conhecimento e matérias favoritas para direcionar o conteúdo de estudo.
 
- ✅Plano de Estudo Personalizado:
+ ✅Plano de Estudo Personalizado (Guia de estudos):
 
 Geração Inteligente: Criação automática de cronogramas de estudo adaptativos, baseados no desempenho individual e no conteúdo programático do exame.
 Sugestão de Materiais: Recomendação dinâmica de recursos (vídeos, textos, podcasts) ajustados ao ritmo e às necessidades de aprendizado do aluno.
 
-✅ Banco de Questões e Exercícios:
-
-Acervo Abrangente: Mais de 50 mil questões de diversas disciplinas e instituições.
-Testes Personalizados: Geração de provas e listas de exercícios com filtros avançados (disciplina, instituição, ano, dificuldade, palavra-chave).
-Correção e Feedback: Correção automática de questões objetivas com feedback imediato para auxiliar na compreensão dos erros.
-
 ✅ Tutor Virtual:
 
-Assistência de IA: Chatbot inteligente para esclarecer dúvidas complexas.
-Recomendação de Conteúdo: Explicação de materia de maneira simples e resumida.
+Assistência de IA: Um chatbot inteligente que esclarece dúvidas complexas, explica conceitos de forma simples e ajuda a manter o foco nos estudos.
+Recomendação de Conteúdo: Sugestões de materiais de estudo alinhados ao seu perfil e às suas necessidades.
+
+✅ Quiz de Perguntas:
+
+Banco de Questões: Mais de 50 mil perguntas de diversas disciplinas, adaptadas ao seu vestibular.
+Testes Personalizados: Geração de quizzes com filtros por matéria, dificuldade e tópicos específicos, para testar seu conhecimento e consolidar o aprendizado.
+Correção e Feedback: Respostas automáticas com explicações para ajudar na compreensão dos erros.
 
 ✅ Interface Acessível e Responsiva:
 
